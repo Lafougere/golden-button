@@ -1,12 +1,12 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../golden-assets/golden-assets.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/golden-assets/golden-assets.html">
 
 <dom-module id="golden-button">
 <template>
 	<style>
 		@font-face {
 			font-family: "FreePixel";
-			src: url("../golden-assets/fonts/Free Pixel Regular.woff2");
+			src: url("../bower_components/golden-assets/fonts/Free Pixel Regular.woff2");
 		}
 		:host {
 			display: inline-block;
@@ -19,7 +19,7 @@
 			/*overflow: hidden;*/
 			line-height: 20px;
 			overflow: hidden;
-			cursor: url(../golden-assets/images/cursors/cursor_grey.png), pointer;
+			cursor: url(../bower_components/golden-assets/images/cursors/cursor_grey.png), pointer;
 		}
 		:host * {
 			box-sizing: border-box;
@@ -59,7 +59,7 @@
 			top: 2px;
 		}
 		.middle {
-			background: url(../golden-assets/images/buttons/btn_middle.gif) repeat-x;
+			background: url(../bower_components/golden-assets/images/buttons/btn_middle.gif) repeat-x;
 			padding-top: 4px;
 		}
 		.middle span {
@@ -71,26 +71,26 @@
 			text-shadow: 1px 1px 0 #113;
 		}
 		.before {
-			background: url(../golden-assets/images/sprite2.png) -394px -48px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -394px -48px;
 			width: 24px;
 		}
 		.after {
-			background: url(../golden-assets/images/sprite2.png) -418px -48px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -418px -48px;
 			width: 25px;
 		}
 		button:hover span, button:focus span {
 			color: #eee;
-			cursor: url(../golden-assets/images/cursors/cursor_hand.gif), pointer;
+			cursor: url(../bower_components/golden-assets/images/cursors/cursor_hand.gif), pointer;
 		}
 		button:hover span, button:focus span {
 			color: #eee;
-			cursor: url(../golden-assets/images/cursors/cursor_hand.gif), pointer;
+			cursor: url(../bower_components/golden-assets/images/cursors/cursor_hand.gif), pointer;
 		}
 		button:active {
-			cursor: url(../golden-assets/images/cursors/cursor_clicked.gif), pointer;
+			cursor: url(../bower_components/golden-assets/images/cursors/cursor_clicked.gif), pointer;
 		}
 		button:active .middle {
-			background-image: url(../golden-assets/images/buttons/btn_middle_active.gif);
+			background-image: url(../bower_components/golden-assets/images/buttons/btn_middle_active.gif);
 		}
 		button:active span {
 			padding-top: 1px;
@@ -108,7 +108,7 @@
 			width: calc(100% + 20px);
 			height: calc(100% + 4px);
 			margin-left: -10px;
-			cursor: url(../golden-assets/images/cursors/cursor_hand.gif), pointer;
+			cursor: url(../bower_components/golden-assets/images/cursors/cursor_hand.gif), pointer;
 		}
 		:host(.active) ::slotted(*), :host(:hover) ::slotted(*){
 			color: #fff;
@@ -133,26 +133,26 @@
 			margin: 0 5px 0 -20px;
 		}
 		:host(.primary) .middle {
-			background: url(../golden-assets/images/buttons/btn_secondary_middle.gif) center center repeat-x;
+			background: url(../bower_components/golden-assets/images/buttons/btn_secondary_middle.gif) center center repeat-x;
 			/*line-height: 28px;*/
 
 		}
 		:host(.primary) .before {
-			background: url(../golden-assets/images/sprite2.png) -336px -42px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -336px -42px;
 			width: 38px;
 			margin-left: 1px;
 		}
 		:host(.primary) .after {
-			background: url(../golden-assets/images/sprite2.png) -380px -42px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -380px -42px;
 			width: 12px;
 			min-width: 12px;
 			margin-right: 1px;
 		}
 		:host(.primary) button:hover .middle, :host(.primary.active) button .middle {
-			background-image: url(../golden-assets/images/buttons/btn_secondary_middle_hover.gif);
+			background-image: url(../bower_components/golden-assets/images/buttons/btn_secondary_middle_hover.gif);
 		}
 		:host(.primary) button:active .middle {
-			background-image: url(../golden-assets/images/buttons/btn_secondary_middle_active.gif) !important;
+			background-image: url(../bower_components/golden-assets/images/buttons/btn_secondary_middle_active.gif) !important;
 		}
 		:host(.primary:hover) span, :host(.primary.active) span {
 			margin: 1px 6px 0 -21px;
@@ -191,7 +191,7 @@
 		}
 
 		:host(.square) button .middle {
-			background: url(../golden-assets/images/sprite2.png) -365px -123px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -365px -123px;
 			width: 25px;
 			height: 24px;
 			padding-top: 2px;
@@ -207,7 +207,7 @@
 			color: #eee;
 		}
 		:host(.square:active) button .middle {
-			background: url(../golden-assets/images/sprite2.png) -390px -123px !important;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -390px -123px !important;
 		}
 
 		:host(.frame-deco) {
@@ -222,15 +222,15 @@
 			pointer-events: none;
 		}
 		:host(.frame-deco) .middle {
-			background: url(../golden-assets/images/frame_deco_middle_active.gif) repeat-x !important;
+			background: url(../bower_components/golden-assets/images/frame_deco_middle_active.gif) repeat-x !important;
 		}
 		:host(.frame-deco) .before {
-			background: url(../golden-assets/images/sprite2.png) -272px -196px no-repeat;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -272px -196px no-repeat;
 			width: 14px;
 			height: 24px;
 		}
 		:host(.frame-deco) .after {
-			background: url(../golden-assets/images/sprite2.png) -319px -196px no-repeat;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -319px -196px no-repeat;
 			width: 14px;
 			height: 24px;
 		}
@@ -238,14 +238,14 @@
 			margin: 0 -5px;
 		}
 		:host(.frame-deco) button:active .middle {
-			background: url(../golden-assets/images/frame_deco_middle.gif) repeat-x !important;
+			background: url(../bower_components/golden-assets/images/frame_deco_middle.gif) repeat-x !important;
 		}
 		:host(.frame-deco) button:active .before {
-			background: url(../golden-assets/images/sprite2.png) -272px -172px !important;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -272px -172px !important;
 			width: 14px;
 		}
 		:host(.frame-deco) button:active .after {
-			background: url(../golden-assets/images/sprite2.png) -319px -172px !important;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -319px -172px !important;
 			width: 14px;
 		}
 
@@ -256,37 +256,37 @@
 			width: 24px;
 			height: 24px;
 			font-size: 0;
-			background: url(../golden-assets/images/sprite2.png) -416px 0;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -416px 0;
 		}
 		:host(.menu) .before, :host(.menu) .after {
 			display:none;
 		}
 		:host(.menu:first-child) .middle {
-			background: url(../golden-assets/images/sprite2.png) -392px 0;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -392px 0;
 		}
 		:host(.menu:last-child) .middle {
-			background: url(../golden-assets/images/sprite2.png) -440px 0;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -440px 0;
 		}
 		:host(.menu:first-child):last-child .middle {
-			background: url(../golden-assets/images/sprite2.png) -365px -123px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -365px -123px;
 			width: 25px;
 			height: 24px;
 			position: relative;
 			top: 4px;
 		}
 		:host(.menu:active) .middle {
-			background: url(../golden-assets/images/sprite2.png) -416px -24px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -416px -24px;
 		}
 		:host(.menu:first-child:active) .middle {
 
-			background: url(../golden-assets/images/sprite2.png) -392px -24px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -392px -24px;
 		}
 		:host(.menu:last-child:active) .middle {
-			background: url(../golden-assets/images/sprite2.png) -440px -24px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -440px -24px;
 		}
 
 		:host(.prepend) .before {
-			background: url(../golden-assets/images/sprite2.png) -272px -148px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -272px -148px;
 			width: 44px;
 			height: 24px;
 
@@ -301,7 +301,7 @@
 			z-index: 10;
 		}
 		:host(.append) .after {
-			background: url(../golden-assets/images/sprite2.png) -320px -148px;
+			background: url(../bower_components/golden-assets/images/sprite2.png) -320px -148px;
 			width: 45px;
 			height: 24px;
 			position: relative;
