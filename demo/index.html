@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>golden-button demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../golden-button.html">
+    <link rel="import" href="../../golden-assets/golden-assets.html">
+    <link rel="import" href="../../golden-gem/golden-gem.html">
+	  <style>
+	  @font-face {
+		  font-family: "FreePixel";
+		  src: url("../../golden-assets/fonts/Free Pixel Regular.woff2");
+		}
+
+	  </style>
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+
+    </custom-style>
+  </head>
+  <body>
+	  <golden-styles></golden-styles>
+    <div class="vertical-section-container centered">
+      <h3>Basic golden-button demo</h3>
+      <demo-snippet>
+        <template>
+<div>
+	<golden-button>Default button</golden-button>
+	<golden-button class="primary">Primary button</golden-button>
+	<golden-button class="square"><img src="../../golden-assets/images/demo/purse-mini.png"></golden-button>
+	<golden-button class="prepend"><golden-gem icon="search" slot="prepend" class="no-frame"></golden-gem>Button with left addon</golden-button>
+	<golden-button class="append"><golden-gem icon="search" slot="append" class="no-frame"></golden-gem>Button with right addon</golden-button>
+</div>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

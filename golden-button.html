@@ -1,0 +1,384 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/utils/flattened-nodes-observer.html">
+
+<dom-module id="golden-button">
+<template>
+	<style>
+
+		:host {
+			display: inline-block;
+			image-rendering: pixelated;
+			user-select: none;
+			height: 32px;
+			position: relative;
+			font-size: 15px;
+			box-sizing: border-box;
+			/*overflow: hidden;*/
+			line-height: 20px;
+			overflow: hidden;
+			cursor: url(../golden-assets/images/cursors/cursor_grey.png), pointer;
+		}
+		:host * {
+			box-sizing: border-box;
+		}
+		:host(:focus) {
+			outline: 0;
+		}
+		button {
+			position: relative;
+			display: block;
+			outline:0;
+			border:0;
+			margin: 0;
+			padding: 0;
+			font-family: FreePixel;
+			font-size: 15px;
+			height: 32px;
+			background: none;
+			overflow: hidden;
+
+
+		}
+		:host([disabled]) {
+			/*pointer-events:none;*/
+		}
+		button[disabled] {
+			/*opacity: 0.6;*/
+			pointer-events:none;
+		}
+		button[disabled] span {
+			color: #888;
+		}
+		div {
+			position: relative;
+			float:left;
+			height: 24px;
+			top: 2px;
+		}
+		.middle {
+			background: url(../golden-assets/images/buttons/btn_middle.gif) repeat-x;
+			padding-top: 4px;
+		}
+		.middle span {
+			margin: 0 -12px;
+			display: block;
+			position: relative;
+			z-index: 1;
+			color: #ccc;
+			text-shadow: 1px 1px 0 #113;
+		}
+		.before {
+			background: url(../golden-assets/images/sprite2.png) -394px -48px;
+			width: 24px;
+		}
+		.after {
+			background: url(../golden-assets/images/sprite2.png) -418px -48px;
+			width: 25px;
+		}
+		button:hover span, button:focus span {
+			color: #eee;
+			cursor: url(../golden-assets/images/cursors/cursor_hand.gif), pointer;
+		}
+		button:hover span, button:focus span {
+			color: #eee;
+			cursor: url(../golden-assets/images/cursors/cursor_hand.gif), pointer;
+		}
+		button:active {
+			cursor: url(../golden-assets/images/cursors/cursor_clicked.gif), pointer;
+		}
+		button:active .middle {
+			background-image: url(../golden-assets/images/buttons/btn_middle_active.gif);
+		}
+		button:active span {
+			padding-top: 1px;
+		}
+		button:active .before {
+			background-position: -394px -72px;
+		}
+		button:active .after {
+			background-position: -418px -72px;
+		}
+		:host ::slotted(*){
+			color: #ccc;
+			text-decoration: none;
+			display: block;
+			width: calc(100% + 20px);
+			height: calc(100% + 4px);
+			margin-left: -10px;
+			cursor: url(../golden-assets/images/cursors/cursor_hand.gif), pointer;
+		}
+		:host(.active) ::slotted(*), :host(:hover) ::slotted(*){
+			color: #fff;
+		}
+		:host(.block) {
+			display: block;
+			width: 100%;
+		}
+
+		:host(.primary.block) .middle  {
+			width: calc(100% - 60px);
+		}
+		:host(.primary) button {
+			width: 100%;
+
+		}
+		:host(.primary) div {
+			height: 26px;
+			top: 2px;
+		}
+		:host(.primary) span {
+			margin: 0 5px 0 -20px;
+		}
+		:host(.primary) .middle {
+			background: url(../golden-assets/images/buttons/btn_secondary_middle.gif) center center repeat-x;
+			/*line-height: 28px;*/
+
+		}
+		:host(.primary) .before {
+			background: url(../golden-assets/images/sprite2.png) -336px -42px;
+			width: 38px;
+			margin-left: 1px;
+		}
+		:host(.primary) .after {
+			background: url(../golden-assets/images/sprite2.png) -380px -42px;
+			width: 12px;
+			min-width: 12px;
+			margin-right: 1px;
+		}
+		:host(.primary) button:hover .middle, :host(.primary.active) button .middle {
+			background-image: url(../golden-assets/images/buttons/btn_secondary_middle_hover.gif);
+		}
+		:host(.primary) button:active .middle {
+			background-image: url(../golden-assets/images/buttons/btn_secondary_middle_active.gif) !important;
+		}
+		:host(.primary:hover) span, :host(.primary.active) span {
+			margin: 1px 6px 0 -21px;
+			color: #eee;
+		}
+		:host(.primary:hover) div, :host(.primary.active) div {
+			height: 28px;
+		}
+		:host(.primary:hover) .before, :host(.primary.active) .before {
+			background-position: -336px -68px;
+			width: 40px;
+			margin-left: 0;
+		}
+		:host(.primary:hover) .after, :host(.primary.active) .after {
+			background-position: -381px -68px;
+			width: 13px;
+			margin-left: -1px;
+			margin-right: -0;
+		}
+		:host(.primary:active) div {
+			height: 26px;
+		}
+		:host(.primary:active) .before {
+			background-position: -336px -96px !important;
+			width: 42px;
+			margin-left: 1px;
+		}
+		:host(.primary:active) .after {
+			background-position: -378px -96px !important;
+			width: 14px;
+			margin-left: -2px;
+			margin-right: 1px;
+		}
+		:host(.primary:active) span{
+			margin: 0 5px 0 -24px;
+		}
+
+		:host(.square) button .middle {
+			background: url(../golden-assets/images/sprite2.png) -365px -123px;
+			width: 25px;
+			height: 24px;
+			padding-top: 2px;
+		}
+		:host(.square) .before, :host(.square) .after {
+			display: none;
+		}
+		:host(.square) span {
+			font-size: 15px;
+			color: #8f563b;
+		}
+		:host(.square:hover) span {
+			color: #eee;
+		}
+		:host(.square:active) button .middle {
+			background: url(../golden-assets/images/sprite2.png) -390px -123px !important;
+		}
+
+		:host(.frame-deco) {
+			position: relative;
+			/*top: 9px;*/
+			margin: 0 8px;
+		}
+		:host(.frame-deco) button {
+			height: 28px;
+		}
+		:host(.frame-deco[disabled]) button {
+			pointer-events: none;
+		}
+		:host(.frame-deco) .middle {
+			background: url(../golden-assets/images/frame_deco_middle_active.gif) repeat-x !important;
+		}
+		:host(.frame-deco) .before {
+			background: url(../golden-assets/images/sprite2.png) -272px -196px no-repeat;
+			width: 14px;
+			height: 24px;
+		}
+		:host(.frame-deco) .after {
+			background: url(../golden-assets/images/sprite2.png) -319px -196px no-repeat;
+			width: 14px;
+			height: 24px;
+		}
+		:host(.frame-deco) span {
+			margin: 0 -5px;
+		}
+		:host(.frame-deco) button:active .middle {
+			background: url(../golden-assets/images/frame_deco_middle.gif) repeat-x !important;
+		}
+		:host(.frame-deco) button:active .before {
+			background: url(../golden-assets/images/sprite2.png) -272px -172px !important;
+			width: 14px;
+		}
+		:host(.frame-deco) button:active .after {
+			background: url(../golden-assets/images/sprite2.png) -319px -172px !important;
+			width: 14px;
+		}
+
+		:host(.menu) .middle {
+/*			margin: 4px -3px 0 0;*/
+			padding: 2px;
+			border: 0;
+			width: 24px;
+			height: 24px;
+			font-size: 0;
+			background: url(../golden-assets/images/sprite2.png) -416px 0;
+		}
+		:host(.menu) .before, :host(.menu) .after {
+			display:none;
+		}
+		:host(.menu:first-child) .middle {
+			background: url(../golden-assets/images/sprite2.png) -392px 0;
+		}
+		:host(.menu:last-child) .middle {
+			background: url(../golden-assets/images/sprite2.png) -440px 0;
+		}
+		:host(.menu:first-child):last-child .middle {
+			background: url(../golden-assets/images/sprite2.png) -365px -123px;
+			width: 25px;
+			height: 24px;
+			position: relative;
+			top: 4px;
+		}
+		:host(.menu:active) .middle {
+			background: url(../golden-assets/images/sprite2.png) -416px -24px;
+		}
+		:host(.menu:first-child:active) .middle {
+
+			background: url(../golden-assets/images/sprite2.png) -392px -24px;
+		}
+		:host(.menu:last-child:active) .middle {
+			background: url(../golden-assets/images/sprite2.png) -440px -24px;
+		}
+
+		:host(.prepend) .before {
+			background: url(../golden-assets/images/sprite2.png) -272px -148px;
+			width: 44px;
+			height: 24px;
+
+		}
+		:host(.prepend) button:active .before {
+			background-position: -272px -124px;
+		}
+		:host(.prepend) ::slotted(golden-gem) {
+			position: absolute;
+			left: 12px;
+			top: 9px;
+			z-index: 10;
+		}
+		:host(.append) .after {
+			background: url(../golden-assets/images/sprite2.png) -320px -148px;
+			width: 45px;
+			height: 24px;
+			position: relative;
+		}
+		:host(.append) button:active .after {
+			background-position: -320px -124px;
+		}
+		:host(.append) ::slotted(golden-gem) {
+			position: absolute;
+			right: 2px;
+			top: 9px;
+			z-index: 10;
+		}
+		:host(.prepend.append) .append {
+
+			right: 24px;
+			top: 2px;
+		}
+		.append {
+			position: absolute;
+			right: 0;
+		}
+	</style>
+	<div class="prepend"><slot id="prepend" name="prepend"></slot></div>
+	<button id="btn" disabled$="[[disabled]]">
+		<div id="before" class="before"></div>
+		<div class="middle" style$="width: calc({{buttonWidth}} - 30px);"><span><slot></slot></span></div>
+		<div id="after" class="after"></div>
+	</button>
+	<div class="append"><slot id="append" name="append"></slot></div>
+
+</template>
+
+<script>
+/**
+* @customElement
+* @polymer
+*/
+class GoldenButton extends Polymer.Element {
+	static get is() { return 'golden-button'; }
+	static get properties() {
+		return {
+			disabled: {
+				type: Boolean,
+				value: false,
+				notify: true,
+				reflectToAttribute: true
+			},
+			buttonWidth: {
+				type: String,
+				value: 'auto'
+			}
+		}
+	}
+	ready(){
+		super.ready()
+		this.addEventListener('keypress', e => {
+			console.log(e.target)
+			if (e.key === 'Enter' && !this.disabled) this.click()
+		})
+		this.addEventListener('click', e => {
+
+			//e.stopPropagation()
+			console.log('shadow click')
+			if (this.disabled) {
+				e.preventDefault()
+				e.stopPropagation()
+				console.log('disabled')
+				//this.dispatchEvent(new CustomEvent('click', e))
+			}
+		})
+	}
+	_attachDom(dom) {
+		this.attachShadow({mode: 'open', delegatesFocus: true});
+		super._attachDom(dom);
+	}
+
+}
+
+window.customElements.define(GoldenButton.is, GoldenButton);
+</script>
+</dom-module>
+
